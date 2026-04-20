@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planning - Refonte Nov'ap - AVANGARDISM</title>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vx3k1fivvb");
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --cream:       #F5F1EB;
+  --cream-2:     #EDE8DF;
+  --brown:       #1E1510;
+  --brown-mid:   #3D2D22;
+  --gray:        #8C857D;
+  --gray-lt:     #C8C2BB;
+  --avm:         #6B4FE8;
+  --avm-lt:      #EAE5FC;
+  --avm-mid:     #A899F0;
+  --teal:        #3BBDB5;
+  --teal-lt:     #D0F2F0;
+  --green:       #5DB870;
+  --green-lt:    #D5EFD9;
+  --orange:      #D96B38;
+  --orange-lt:   #FAE2D4;
+  --sand:        #C4966A;
+  --sand-lt:     #F0E2D0;
+  --red:         #D63C3C;
+  --dev:         #B8B2AB;
+  --dev-lt:      #ECEAE6;
+  --col:         182px;
+  --lbl:         190px;
+  --gap:         6px;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--brown);
+  font-size:14px;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 40px;
+  height:60px;
+  background:var(--brown);
+  color:#fff;
+  gap:20px;
+}
+.topbar-logos { display:flex; align-items:center; gap:20px; }
+.logo-avm img { height:28px; display:block; filter:brightness(0) invert(1); }
+.logo-sep { width:1px; height:28px; background:rgba(255,255,255,0.2); }
+.logo-gl { background:#fff; border-radius:4px; padding:4px 10px; display:flex; align-items:center; }
+.logo-gl img { height:28px; display:block; }
+.topbar-center {
+  flex:1;
+  text-align:center;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+}
+.topbar-ref {
+  font-size:11px;
+  color:rgba(255,255,255,0.4);
+  letter-spacing:0.03em;
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding:28px 40px 22px;
+  border-bottom:1px solid var(--cream-2);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+}
+.hero-eyebrow {
+  font-size:10px; font-weight:600; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--gray); margin-bottom:7px;
+}
+.hero-title {
+  font-family:'Montserrat',sans-serif; font-size:28px; font-weight:700;
+  line-height:1.15; letter-spacing:-0.02em; color:var(--brown); margin-bottom:7px;
+}
+.hero-title span { color:var(--avm); }
+.hero-sub { font-size:11.5px; color:var(--gray); line-height:1.65; }
+.hero-stats { display:flex; gap:0; flex-shrink:0; border:1px solid var(--cream-2); border-radius:8px; overflow:hidden; }
+.hero-stat {
+  padding:14px 22px; text-align:center; border-right:1px solid var(--cream-2);
+  background:#fff;
+}
+.hero-stat:last-child { border-right:none; }
+.stat-val {
+  font-family:'Montserrat',sans-serif; font-size:20px; font-weight:700;
+  color:var(--brown); display:block; line-height:1.1;
+}
+.stat-val.purple { color:var(--avm); }
+.stat-lbl {
+  font-size:9px; font-weight:600; text-transform:uppercase;
+  letter-spacing:0.08em; color:var(--gray); display:block; margin-top:4px;
+}
+
+/* ─── EQUIPE ─── */
+.equipe-bar {
+  padding:10px 40px; background:#fff; border-bottom:1px solid var(--cream-2);
+  display:flex; gap:24px; align-items:center;
+}
+.eq-label {
+  font-size:9px; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--gray); flex-shrink:0;
+}
+.eq-member { display:flex; align-items:center; gap:8px; }
+.eq-av {
+  width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:9.5px; font-weight:700; color:#fff; flex-shrink:0;
+}
+.eq-name { font-size:10.5px; font-weight:600; color:var(--brown); line-height:1.2; }
+.eq-role { font-size:9px; color:var(--gray); }
+.eq-sep { width:1px; height:28px; background:var(--cream-2); }
+
+/* ─── FILTER BAR ─── */
+.filter-bar {
+  padding:8px 40px; border-bottom:1px solid var(--cream-2);
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  background:#fff;
+}
+.fbar-label {
+  font-size:9px; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--gray); flex-shrink:0; margin-right:4px;
+}
+.fcheck { display:flex; align-items:center; gap:5px; cursor:pointer; font-size:11px; color:var(--brown-mid); }
+.fcheck input { cursor:pointer; }
+
+/* ─── LEGEND ─── */
+.legend-bar {
+  padding:8px 40px; border-bottom:1px solid var(--cream-2);
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  background:var(--cream-2);
+}
+.leg { display:flex; align-items:center; gap:5px; font-size:9.5px; color:var(--brown-mid); }
+.ldot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+
+/* ─── BUDGET BAR ─── */
+.bbar {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:9px 40px; background:var(--brown); color:#fff;
+}
+.bbar-left { display:flex; align-items:center; gap:10px; }
+.bbadge {
+  font-family:'Montserrat',sans-serif; font-size:9.5px; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  background:rgba(255,255,255,0.12); padding:3px 8px; border-radius:3px;
+}
+.bbar-title { font-size:11px; font-weight:400; color:rgba(255,255,255,0.65); }
+.bbar-total {
+  font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700;
+}
+
+/* ─── GRID ─── */
+.grid-outer { overflow-x:auto; }
+.grid-wrap  { padding:14px 40px 20px; min-width:max-content; }
+
+/* phase row */
+.prow {
+  display:grid;
+  grid-template-columns:var(--lbl) repeat(8,var(--col));
+  gap:var(--gap); margin-bottom:var(--gap);
+}
+.ph {
+  padding:8px 10px; border-radius:5px;
+  background:var(--brown-mid); color:#fff;
+}
+.ph.dev-ph  { background:var(--dev); color:var(--brown); }
+.ph.oct-ph  { background:var(--red); }
+.ph-month {
+  font-family:'Montserrat',sans-serif; font-size:13px; font-weight:800;
+  text-transform:uppercase; line-height:1.3;
+}
+.ph-week { font-size:9px; opacity:0.6; text-transform:uppercase; margin-top:3px; }
+
+/* track rows */
+.trow {
+  display:grid;
+  grid-template-columns:var(--lbl) repeat(8,var(--col));
+  gap:var(--gap); margin-bottom:var(--gap); align-items:start;
+}
+.trow.hidden { display:none; }
+
+.tlbl {
+  padding:12px 10px 10px 0; font-size:9px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.1em; color:var(--gray);
+  text-align:right; line-height:1.5;
+}
+.tc { min-height:40px; display:flex; flex-direction:column; gap:4px; }
+.tc.dz {
+  background:repeating-linear-gradient(45deg,var(--dev-lt),var(--dev-lt) 4px,#fff 4px,#fff 10px);
+  border-radius:5px; padding:6px; opacity:0.8;
+}
+
+/* pills */
+.p {
+  border-radius:4px; padding:6px 10px; font-size:10.5px; line-height:1.4;
+}
+.pt { font-weight:600; display:block; margin-bottom:2px; font-size:10.5px; }
+.ps { font-weight:400; display:block; font-size:9.5px; opacity:0.82; }
+.pd { font-size:8.5px; opacity:0.58; display:inline-block; margin-top:2px; }
+
+.pp  { background:#242018; color:#fff; }
+.pa  { background:var(--teal-lt); color:#155754; border:1px solid #9DD9D6; }
+.pu  { background:#E4E0D8; color:var(--brown); border:1px solid #C9C2BA; }
+.pi  { background:#EDE7DE; color:#4A3828; border:1px solid #CEC0B0; }
+.ps2 { background:var(--avm-lt); color:#3318C0; border:1px solid var(--avm-mid); }
+.pc  { background:var(--orange-lt); color:#7A2E10; border:1px solid #E8A07A; }
+.pq  { background:var(--green-lt); color:#1E5E2E; border:1px solid #90D09E; }
+.ph2 { background:var(--sand-lt); color:#5A3318; border:1px solid var(--sand); }
+.pdv { background:var(--dev-lt); color:#666; border:1px dashed var(--dev); }
+
+/* milestone row */
+.mrow {
+  display:grid;
+  grid-template-columns:var(--lbl) repeat(8,var(--col));
+  gap:var(--gap); margin-bottom:var(--gap);
+}
+.mc { display:flex; flex-direction:column; gap:3px; padding:2px 0; }
+.mt {
+  background:var(--red); color:#fff; border-radius:4px;
+  padding:5px 8px; font-size:8.5px; font-weight:700;
+  letter-spacing:0.05em; text-transform:uppercase;
+  text-align:center; line-height:1.4;
+}
+.mt.soft    { background:var(--avm); }
+.mt.neutral { background:var(--gray); }
+
+/* ─── B2 TOGGLE ─── */
+.b2bar {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 40px; background:var(--avm); color:#fff;
+  cursor:pointer; user-select:none;
+}
+.b2bar:hover { background:#5A40D4; }
+.b2bar-l { display:flex; align-items:center; gap:12px; }
+.b2bar-r { display:flex; align-items:center; gap:10px; font-size:11px; opacity:0.8; }
+.b2icon { font-size:13px; transition:transform 0.25s; }
+.b2icon.open { transform:rotate(180deg); }
+.b2section { }
+.b2section.collapsed { display:none; }
+
+.b2wrap { padding:14px 40px 28px; background:#f8f6f2; border-bottom:1px solid var(--cream-2); }
+.b2grid {
+  display:grid;
+  grid-template-columns:var(--lbl) repeat(6,1fr);
+  gap:var(--gap);
+}
+.b2mh {
+  background:var(--avm); color:#fff; padding:7px 10px;
+  border-radius:4px; font-family:'Montserrat',sans-serif;
+  font-size:9.5px; font-weight:700; text-align:center;
+  letter-spacing:0.04em; line-height:1.5;
+}
+.b2period {
+  grid-column:2/-1; background:var(--avm-lt);
+  border:1.5px solid var(--avm-mid); border-radius:4px;
+  padding:7px 14px; font-size:9.5px; font-weight:600;
+  color:#3318C0; text-align:center; line-height:1.5; margin-bottom:3px;
+}
+
+/* ─── FOOTER ─── */
+.foot {
+  padding:20px 40px; border-top:1px solid var(--cream-2);
+  display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
+  background:#fff;
+}
+.foot-notes {
+  font-size:9.5px; color:var(--gray); line-height:1.8; max-width:820px;
+}
+.foot-notes strong { color:var(--brown-mid); }
+.foot-right { text-align:right; flex-shrink:0; }
+.foot-right a {
+  font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700;
+  color:var(--avm); text-decoration:none;
+}
+.foot-right a:hover { text-decoration:underline; }
+.foot-date { font-size:9.5px; color:var(--gray); margin-top:5px; display:block; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:900px) {
+  body { min-width:0; font-size:12px; }
+
+  .topbar { padding:12px 20px; height:auto; flex-wrap:wrap; gap:8px; }
+  .topbar-center { display:none; }
+  .topbar-ref { font-size:10px; }
+
+  .hero { flex-direction:column; padding:20px; gap:16px; align-items:flex-start; }
+  .hero-title { font-size:18px; }
+  .hero-stats { width:100%; overflow-x:auto; border-radius:6px; }
+  .hero-stat { padding:10px 16px; }
+  .stat-val { font-size:14px; }
+
+  .equipe-bar { overflow-x:auto; padding:10px 20px; gap:16px; flex-wrap:nowrap; }
+
+  .filter-bar { padding:8px 20px; }
+
+  .legend-bar { padding:6px 20px; gap:10px; }
+
+  .bbar { padding:8px 20px; flex-direction:column; align-items:flex-start; gap:4px; }
+
+  .grid-outer { position:relative; }
+  .grid-outer::after {
+    content:'← Faire défiler →';
+    display:block;
+    text-align:center;
+    font-size:10px;
+    color:var(--gray);
+    padding:6px 20px 10px;
+    letter-spacing:0.05em;
+  }
+  .grid-wrap { padding:10px 20px 6px; }
+
+  .b2wrap { padding:10px 20px 20px; overflow-x:auto; }
+  .b2grid { min-width:700px; }
+
+  .foot { flex-direction:column; padding:20px; gap:16px; }
+  .foot-right { text-align:left; }
+
+  /* Budget 2 responsive */
+  .budget-section { margin: 24px 16px; }
+  .budget-header { flex-direction:column; gap:16px; }
+  .budget-kpis { flex-wrap:wrap; gap:12px; }
+  .kpi { text-align:left; }
+  .kpi-value { font-size:15px; }
+  .budget-title { font-size:18px; }
+  .b2-grid { overflow-x:auto; display:block; }
+  .b2-grid > .b2-row { display:grid; grid-template-columns:200px repeat(12, 90px); min-width:1280px; }
+  .b2-grid > .b2-row.b2-phases-row { display:grid; grid-template-columns:200px repeat(12, 90px); min-width:1280px; }
+  .b2-legende { flex-wrap:wrap; gap:12px; }
+  .b2-conditions { font-size:11px; }
+}
+
+/* ── Budget 2 — Accompagnement SEO/GEO annuel ── */
+.budget-section {
+  margin: 48px 24px;
+  font-family: 'Inter', sans-serif;
+}
+
+.budget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 32px;
+}
+
+.budget-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #684eb8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.budget-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1c1b1f;
+  margin: 0 0 4px;
+}
+
+.budget-subtitle {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+.budget-kpis {
+  display: flex;
+  gap: 24px;
+}
+
+.kpi {
+  text-align: right;
+}
+
+.kpi-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c1b1f;
+}
+
+.kpi-label {
+  display: block;
+  font-size: 11px;
+  color: #999;
+}
+
+.b2-grid {
+  display: grid;
+  grid-template-columns: 260px repeat(12, 1fr);
+  gap: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.b2-row {
+  display: contents;
+}
+
+.b2-row > * {
+  border-bottom: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
+  padding: 10px 8px;
+  font-size: 12px;
+}
+
+.b2-header .b2-month {
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.phase1 { background: #f3f0fb; color: #4a3490; }
+.phase2 { background: #edf4ff; color: #1a5fc8; }
+.phase3 { background: #f0faf4; color: #1a7a4a; }
+
+.b2-label-col {
+  background: #fafafa;
+  padding: 12px 14px;
+}
+
+.b2-livrable-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #1c1b1f;
+  margin-bottom: 3px;
+}
+
+.b2-livrable-desc {
+  font-size: 11px;
+  color: #888;
+  line-height: 1.4;
+}
+.b2-livrable-desc em {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  color: #684eb8;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.b2-cell {
+  text-align: center;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.b2-cell.active.phase1 { color: #684eb8; }
+.b2-cell.active.phase2 { color: #1a5fc8; }
+.b2-cell.active.phase3 { color: #1a7a4a; }
+.b2-cell.inactive { color: #ccc; }
+
+.b2-phases-row .b2-phase-block {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px 8px;
+  font-weight: 500;
+}
+.b2-phases-row .b2-phase-block strong {
+  font-size: 14px;
+}
+
+.b2-phase-block.phase1-block { background: #ede8f7; color: #4a3490; }
+.b2-phase-block.phase2-block { background: #ddeeff; color: #1a5fc8; }
+.b2-phase-block.phase3-block { background: #e0f5ea; color: #1a7a4a; }
+
+.phase-total {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.b2-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #aaa;
+}
+
+.b2-jours-row .b2-jours,
+.b2-budget-row .b2-budget {
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.b2-jours.phase1 { color: #684eb8; background: #f3f0fb; }
+.b2-jours.phase2 { color: #1a5fc8; background: #edf4ff; }
+.b2-jours.phase3 { color: #1a7a4a; background: #f0faf4; }
+
+.b2-budget.phase1 { color: #684eb8; background: #f3f0fb; }
+.b2-budget.phase2 { color: #1a5fc8; background: #edf4ff; }
+.b2-budget.phase3 { color: #1a7a4a; background: #f0faf4; }
+
+.b2-legende {
+  display: flex;
+  gap: 24px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: #888;
+}
+
+.b2-conditions {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #f9f8ff;
+  border-left: 3px solid #684eb8;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-logos">
+    <div class="logo-avm">
+      <img src="https://cdn.prod.website-files.com/66588e24572b26705038ae95/6658abf3b1404f0269e949ca_Logo%20Final%20File.svg" alt="AVANGARDISM">
+    </div>
+    <div class="logo-sep"></div>
+    <div class="logo-gl">
+      <img src="./novap-logo.svg" alt="Nov'ap FEHAP">
+    </div>
+  </div>
+  <div class="topbar-center">Planning prévisionnel &nbsp;·&nbsp; Refonte Nov'ap FEHAP</div>
+  <div class="topbar-ref">AVM-D-2026-NOVAP &nbsp;·&nbsp; 20 avril 2026 &nbsp;·&nbsp; Confidentiel</div>
+</div>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Planning prévisionnel &nbsp;·&nbsp; Budget TMA inclus</div>
+    <div class="hero-title">Refonte Nov'ap FEHAP<br><span>WordPress, Design et pilotage</span></div>
+    <div class="hero-sub">
+      Nov'ap FEHAP &times; AVANGARDISM &nbsp;&middot;&nbsp;
+      Refonte complète site (kick-off fin avril, livraison avant l'été) &nbsp;&middot;&nbsp;
+      TMA 6 mois post-lancement incluse
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="stat-val">Avr. &rarr; Juil.</span>
+      <span class="stat-lbl">Durée projet</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-val purple">18 180 &euro; TTC</span>
+      <span class="stat-lbl">Budget total</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-val">10 semaines</span>
+      <span class="stat-lbl">Timeline</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-val">6 mois</span>
+      <span class="stat-lbl">TMA inclus</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-val">Juil. 2026</span>
+      <span class="stat-lbl">Mise en ligne</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── EQUIPE ─── -->
+<div class="equipe-bar">
+  <div class="eq-label">Équipe projet</div>
+  <div class="eq-member">
+    <div class="eq-av" style="background:var(--brown-mid)">AB</div>
+    <div><div class="eq-name">Alexandre Bessis</div><div class="eq-role">Lead Dev WordPress &nbsp;·&nbsp; Sur ce projet : développement, intégration, pilotage technique, TMA</div></div>
+  </div>
+  <div class="eq-sep"></div>
+  <div class="eq-member">
+    <div class="eq-av" style="background:var(--avm)">MB</div>
+    <div><div class="eq-name">Milan Bollecker</div><div class="eq-role">Chef de Projet et Lead SEO &nbsp;·&nbsp; Sur ce projet : interlocuteur principal FEHAP, SEO, contenus, Matomo</div></div>
+  </div>
+  <div class="eq-sep"></div>
+  <div class="eq-member">
+    <div class="eq-av" style="background:var(--teal)">LD</div>
+    <div><div class="eq-name">Louane</div><div class="eq-role">Lead UI et direction créative &nbsp;·&nbsp; Sur ce projet : direction artistique, maquettes Figma, arborescence, design system</div></div>
+  </div>
+</div>
+
+<!-- ─── FILTER BAR ─── -->
+<div class="filter-bar">
+  <span class="fbar-label">Afficher :</span>
+  <label class="fcheck"><input type="checkbox" checked onchange="toggleFilter(this,'jalons')"> Jalons</label>
+  <label class="fcheck"><input type="checkbox" checked onchange="toggleFilter(this,'cadrage')"> Cadrage</label>
+  <label class="fcheck"><input type="checkbox" checked onchange="toggleFilter(this,'design')"> Design</label>
+  <label class="fcheck"><input type="checkbox" checked onchange="toggleFilter(this,'dev')"> Développement</label>
+  <label class="fcheck"><input type="checkbox" checked onchange="toggleFilter(this,'contenus')"> Contenus & SEO</label>
+  <label class="fcheck"><input type="checkbox" checked onchange="toggleFilter(this,'recettage')"> Recettage</label>
+</div>
+
+<!-- ─── LEGEND ─── -->
+<div class="legend-bar">
+  <div class="leg"><div class="ldot" style="background:#242018"></div>Pilotage & cadrage</div>
+  <div class="leg"><div class="ldot" style="background:var(--teal)"></div>Moodboard & direction artistique</div>
+  <div class="leg"><div class="ldot" style="background:#D8D0C5;border:1px solid #bbb"></div>Maquettes Figma</div>
+  <div class="leg"><div class="ldot" style="background:var(--avm)"></div>Développement WordPress</div>
+  <div class="leg"><div class="ldot" style="background:var(--orange)"></div>Intégration contenus & SEO</div>
+  <div class="leg"><div class="ldot" style="background:var(--green)"></div>Recettage</div>
+  <div class="leg"><div class="ldot" style="background:var(--sand)"></div>Mise en ligne</div>
+  <div class="leg"><div class="ldot" style="background:var(--red)"></div>Jalons clients</div>
+</div>
+
+<!-- ─── BUDGET BAR ─── -->
+<div class="bbar">
+  <div class="bbar-left">
+    <span class="bbadge">Budget &ndash; Refonte + TMA 6 mois</span>
+    <span class="bbar-title">Kick-off fin avril &rarr; Livraison juillet 2026 &nbsp;&middot;&nbsp; Avril à juillet &nbsp;&middot;&nbsp; Nov'ap FEHAP</span>
+  </div>
+  <span class="bbar-total">18 180,00 &euro; TTC</span>
+</div>
+
+<!-- ─── GRID ─── -->
+<div class="grid-outer"><div class="grid-wrap">
+
+  <!-- EN-TÊTES DE PHASES -->
+  <div class="prow">
+    <div></div>
+    <div class="ph"><div class="ph-month">Fin avril</div><div class="ph-week">S18–19</div></div>
+    <div class="ph"><div class="ph-month">Mai</div><div class="ph-week">S20–22</div></div>
+    <div class="ph"><div class="ph-month">Juin</div><div class="ph-week">S23–24</div></div>
+    <div class="ph"><div class="ph-month">Juin–Juillet</div><div class="ph-week">S25–26</div></div>
+    <div class="ph oct-ph"><div class="ph-month">Juillet 2026</div><div class="ph-week">Lancement</div></div>
+  </div>
+
+  <!-- JALONS -->
+  <div class="trow" data-track="jalons">
+    <div class="tlbl">Jalons<br>clients</div>
+    <div class="mc"><div class="mt soft">Kick-off<br>Fin avril</div></div>
+    <div class="mc"></div>
+    <div class="mc"><div class="mt">Maquettes Figma<br>validées &ndash; 1er juin</div></div>
+    <div class="mc"></div>
+    <div class="mc"><div class="mt soft">Livraison<br>Avant l'été</div></div>
+    <div class="mc"><div class="mt">🚀 Lancement<br>Juillet 2026</div></div>
+  </div>
+
+  <!-- 01 CADRAGE -->
+  <div class="trow" data-track="cadrage">
+    <div class="tlbl">Cadrage<br>et coordination</div>
+    <div class="tc">
+      <div class="p pp"><span class="pt">Kick-off projet</span><span class="ps">Atelier de lancement, validation planning, accès ressources, outils suivi (Trello, Drive, Slack)</span></div>
+      <div class="p pp"><span class="pt">Synchronisations hebdo</span><span class="ps">Suivi avancement, décisions structurantes, 1 point par semaine avril→juillet</span></div>
+    </div>
+    <div class="tc"></div>
+    <div class="tc">
+      <div class="p pp"><span class="pt">Arbitrages stratégiques</span><span class="ps">Direction artistique, validation parti-pris conception, coordination équipe</span></div>
+    </div>
+    <div class="tc">
+      <div class="p ph2"><span class="pt">Support technique post-livraison</span><span class="ps">Accompagnement mise en ligne, formation back-office, TMA 6 mois</span></div>
+    </div>
+    <div class="tc"></div>
+  </div>
+
+  <!-- 02 DESIGN -->
+  <div class="trow" data-track="design">
+    <div class="tlbl">Direction<br>artistique &<br>maquettes</div>
+    <div class="tc">
+      <div class="p pa"><span class="pt">Moodboard & DA</span><span class="ps">Direction artistique, inspiration, palette couleurs, typographies, style visuel</span></div>
+    </div>
+    <div class="tc">
+      <div class="p pi"><span class="pt">Maquettes Figma desktop</span><span class="ps">Homepage, pages type, formulaires, galeries, animations &ndash; desktop + mobile responsive</span></div>
+      <div class="p pa"><span class="pt">Design reviews</span><span class="ps">Validations itératives avec FEHAP, ajustements créatifs</span></div>
+    </div>
+    <div class="tc">
+      <div class="p pi"><span class="pt">Design System UI</span><span class="ps">Composants, tokens couleur, grille responsive, documentation</span></div>
+      <div class="p pa"><span class="pt">Validation finale</span><span class="ps">Maquettes finalisées, hand-off vers développement</span></div>
+    </div>
+    <div class="tc">
+      <div class="p ph2"><span class="pt">Support design dev</span><span class="ps">Réponses questions, ajustements visuels, validation responsive</span></div>
+    </div>
+    <div class="tc"></div>
+  </div>
+
+  <!-- 03 DÉVELOPPEMENT -->
+  <div class="trow" data-track="dev">
+    <div class="tlbl">Développement<br>WordPress</div>
+    <div class="tc"></div>
+    <div class="tc"></div>
+    <div class="tc">
+      <div class="p ps2"><span class="pt">Développement thème custom</span><span class="ps">Theme WordPress, plugins (Gravity Forms, Yoast SEO), intégration design, formulaire export PDF, feed lauréats, FAQ</span></div>
+    </div>
+    <div class="tc">
+      <div class="p ps2"><span class="pt">Tests fonctionnels & ajustements</span><span class="ps">QA, corrections bugs, optimisations, vérification tous navigateurs</span></div>
+    </div>
+    <div class="tc"></div>
+  </div>
+
+  <!-- 04 CONTENUS & SEO -->
+  <div class="trow" data-track="contenus">
+    <div class="tlbl">Intégration<br>contenus &<br>SEO setup</div>
+    <div class="tc"></div>
+    <div class="tc"></div>
+    <div class="tc"></div>
+    <div class="tc">
+      <div class="p pc"><span class="pt">Intégration contenus</span><span class="ps">Intégration des contenus fournis par FEHAP dans WordPress, optimisation SEO on-page</span></div>
+      <div class="p ps2"><span class="pt">Configuration Matomo & GTM</span><span class="ps">Installation analytics, tracking événements, goals, alertes</span></div>
+      <div class="p ps2"><span class="pt">SEO setup</span><span class="ps">Méta descriptions, canonical, structured data, sitemap.xml, robots.txt</span></div>
+    </div>
+    <div class="tc"></div>
+  </div>
+
+  <!-- 05 RECETTAGE -->
+  <div class="trow" data-track="recettage">
+    <div class="tlbl">Recettage &<br>mise en ligne</div>
+    <div class="tc"></div>
+    <div class="tc"></div>
+    <div class="tc"></div>
+    <div class="tc"></div>
+    <div class="tc">
+      <div class="p pq"><span class="pt">Recettage fonctionnel</span><span class="ps">Tests navigateurs, formulaires, liens, images, animations, responsive mobile</span></div>
+      <div class="p pq"><span class="pt">Optimisations pre-launch</span><span class="ps">Performance, Core Web Vitals, sécurité, backup strategy</span></div>
+    </div>
+    <div class="tc">
+      <div class="p ph2"><span class="pt">🚀 Mise en ligne</span><span class="ps">Déploiement production, vérification, monitoring, formation client back-office</span></div>
+    </div>
+  </div>
+
+
+</div></div><!-- /grid -->
+
+
+
+
+<!-- ─── FOOTER ─── -->
+<div class="foot">
+  <div class="foot-notes">
+    <strong>Budget détaillé :</strong> 15 150 € HT (18 180 € TTC · TVA 20%). Acompte 40% à signature, 40% à validation maquettes, solde à livraison. TMA 6 mois inclus (juillet–décembre 2026).<br>
+    <strong>Hypothèses :</strong> accès admin WordPress et domaine transmis kick-off &middot; contenus fournis par FEHAP &middot; validation maquettes fin mai/1er juin.<br>
+    <strong>Conditions de paiement :</strong> 40% à la commande (7 272 € TTC) &middot; 40% à la validation maquettes Figma (7 272 € TTC) &middot; 20% à la livraison (3 636 € TTC).
+  </div>
+  <div class="foot-right">
+    <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--avm)">Nov'ap FEHAP</span>
+    <span class="foot-date">AVM-D-2026-NOVAP &nbsp;&middot;&nbsp; 20 avril 2026</span>
+  </div>
+</div>
+
+<script>
+// Filtre tracks
+function toggleFilter(cb, track) {
+  document.querySelectorAll('[data-track="' + track + '"]')
+    .forEach(r => r.classList.toggle('hidden', !cb.checked));
+}
+
+</script>
+</body>
+</html>
